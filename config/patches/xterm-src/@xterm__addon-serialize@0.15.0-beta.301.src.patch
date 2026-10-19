@@ -1,5 +1,5 @@
 diff --git a/src/SerializeAddon.ts b/src/SerializeAddon.ts
-index e1728feb219c362dfa2ecb602ff99f830d520757..0265fbddaefd3a95de4fd7c1e773cc1c97d1f3bb 100644
+index e1728feb219c362dfa2ecb602ff99f830d520757..cd4a9466658bb7930cd4f8973d0a3b24d1ca0074 100644
 --- a/src/SerializeAddon.ts
 +++ b/src/SerializeAddon.ts
 @@ -5,12 +5,78 @@
@@ -376,3 +376,14 @@ index e1728feb219c362dfa2ecb602ff99f830d520757..0265fbddaefd3a95de4fd7c1e773cc1c
  
      // For xterm headless: fallback to ansi colors
      if ((_terminal as any)._core._themeService) {
+@@ -740,7 +892,9 @@ export class HTMLSerializeHandler extends BaseSerializeHandler {
+ 
+     const fgChanged = !equalFg(cell, oldCell);
+     const bgChanged = !equalBg(cell, oldCell);
+-    const flagsChanged = !equalFlags(cell, oldCell);
++    const flagsChanged = !equalFlags(cell, oldCell)
++      || cell.isUnderline() !== oldCell.isUnderline()
++      || cell.getUnderlineStyle() !== oldCell.getUnderlineStyle();
+ 
+     if (fgChanged || bgChanged || flagsChanged) {
+       const fgHexColor = this._getHexColor(cell, true);

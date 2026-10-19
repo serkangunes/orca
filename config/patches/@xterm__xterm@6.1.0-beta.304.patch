@@ -1587,3 +1587,17 @@ index 8f0aeeed15d38aa8ab341577520db15d13788a52..1cd8d2bd124fe7f389ee0cfbfa11f1a1
    logLevel?: LogLevel;
    logger?: ILogger | null;
    macOptionIsMeta?: boolean;
+diff --git a/typings/xterm.d.ts b/typings/xterm.d.ts
+index c66a52e85ce563caa3e37f27cbddca9f1f2b4d3c..5e111f59eb214a7ebfbf33b4424d7b019ad97824 100644
+--- a/typings/xterm.d.ts
++++ b/typings/xterm.d.ts
+@@ -162,6 +162,9 @@ declare module '@xterm/xterm' {
+      */
+     linkHandler?: ILinkHandler | null;
+ 
++    /** Whether OSC 8 links are underlined when not hovered. */
++    linkUnderlines?: boolean;
++
+     /**
+      * What log level to use, this will log for all levels below and including
+      * what is set:
